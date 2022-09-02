@@ -1,11 +1,18 @@
 <script setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
+import ArcoVueIcon from '@arco-design/web-vue/es/icon';
+import '@arco-design/web-vue/dist/arco.css';
 
 defineProps({
-  msg: String
-})
+  msg: String,
+});
 
-const count = ref(0)
+const count = ref(0);
+let columns = ['City', 'IP'];
+let vps_status = [
+  { ip: 'xxx', city: 'cccc' },
+  { ip: '1.2023yy', city: 'cccc' },
+];
 </script>
 
 <template>
@@ -18,7 +25,11 @@ const count = ref(0)
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
   </div>
-
+  <ul v-for="info in vps_status">
+    <span> {{ info.ip }} </span>
+    <span> {{ info.city }} </span>
+  </ul>
+  <list v-for="info in vps_status" :data="info.city" />
   <p>
     Check out
     <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
